@@ -1,0 +1,78 @@
+.contenedor_general{
+    align-content: center;
+}
+
+.contenedor_enunciados{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedor_respuestas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton_default {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: rgb(233, 233, 233);
+    font-weight: 600;
+}
+
+.boton_default:hover {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+}
+
+.boton_seleccionado {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: greenyellow;
+    font-weight: bold;
+}
+
+.boton_ultima_palabra {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(255, 166, 0);
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.boton_ultima_palabra:hover {
+    font-size: 1.6rem;
+    background-color: rgb(255, 238, 0);
+    color: black;
+    font-weight: bold;
+}
+
+.boton_retirada {
+    margin-top: 2rem;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(97, 95, 95);
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    margin-right: -40rem;
+}
+
+.boton_retirada:hover {
+    background-color: rgb(41, 38, 38);
+    font-size: 1.1rem;
+}

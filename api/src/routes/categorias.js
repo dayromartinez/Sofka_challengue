@@ -10,14 +10,14 @@ const STATUS_OK = 200;
 //Ruta para obtener categorias
 router.get('/categorias', async(req, res) => {
 
-    const { id } = req.body;
+    const { id } = req.query;
 
     try {
         
         const categoria = await Categoria.findByPk(id, {include: Pregunta});
 
         if(categoria === null){
-            res.status(STATUS_USER_ERROR).send("No hay categorias registradas");
+            res.status(STATUS_USER_ERROR).json({error: "No hay categorias registradas"});
         }else{
             res.status(STATUS_OK).json(categoria);
         }

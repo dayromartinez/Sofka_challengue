@@ -18,10 +18,6 @@ module.exports = (sequelize) => {
         nombre: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-            validate: {
-                isAlpha: true,
-            }
         },
         password: {
             type: DataTypes.STRING,

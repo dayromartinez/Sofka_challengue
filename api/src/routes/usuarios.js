@@ -9,8 +9,9 @@ const STATUS_OK = 200;
 //Ruta para loguear usuarios
 router.get('/usuarios', async(req, res) => {
 
-    const { nombre, password } = req.body;
+    const { nombre } = req.query;
 
+    
     try {
 
         const usuario = await Usuario.findOne({
@@ -18,16 +19,12 @@ router.get('/usuarios', async(req, res) => {
             where: {
                 nombre: nombre
             },
-        });
+        }); 
     
         if(usuario === null){
-            res.status(STATUS_USER_ERROR).send("Usuario no encontrado. Intentelo nuevamente.");
+            res.status(STATUS_OK).json({error: "Usuario no encontrado. Intentelo nuevamente."});
         }else{
-            if(usuario.dataValues.password === password){
-                res.status(STATUS_OK).json(usuario);
-            }else{
-                res.status(STATUS_USER_ERROR).send("Contraseña incorrecta. Intentelo nuevamente.");
-            }
+            res.status(STATUS_OK).json(usuario);
         }
 
     } catch (error) {
@@ -42,23 +39,20 @@ router.post('/usuarios', async (req, res) => {
     //Crea un usuario en la base de datos
 
     const { nombre, password } = req.body;
-
+    console.log(nombre, password);
     try {   
     
-        const [usuario, created] = await Usuario.findOrCreate({
-            where: { nombre: nombre },
-            defaults: {
+        const usuario = await Usuario.create({
+            
                 id: contador + 1,
                 nombre: nombre,
                 password: password
-            }
+            
         });
 
-        if(created){
+        if(usuario){
             contador++;
             res.status(STATUS_OK).json(usuario);
-        }else{
-            res.status(STATUS_USER_ERROR).send("El usuario ya existe");
         }
         
     } catch (error) {
